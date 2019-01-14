@@ -1,22 +1,24 @@
 from lib_ddclient import DdclientHelper
-from charmhelpers.core import hookenv
-from charms.reactive import set_flag, when_not
+from charmhelpers.core import hookenv, host
+from charms.reactive import set_flag, when_not, when
 
 helper = DdclientHelper()
 
 
-@when_not('ddclient.installed')
-def install_ddclient():
-    # Do your setup here.
-    #
-    # If your charm has other dependencies before it can install,
-    # add those as @when() clauses above., or as additional @when()
-    # decorated handlers below
-    #
-    # See the following for information about reactive charms:
-    #
-    #  * https://jujucharms.com/docs/devel/developer-getting-started
-    #  * https://github.com/juju-solutions/layer-basic#overview
-    #
+@when_not('ddclient.configured')
+@when('apt.installed.ddclient')
+def configure_ddclient():
+    host.service_stop('ddclient')
+    if not helper.charm_config['ddclient-enable']:
+        host.service('disable', 'ddclient')
+    helper.write_config()
+    if helper.charm_config['ddclient-enable']:
+        host.service_start('ddclient')
+        host.service('enable', 'ddclient')
     hookenv.status_set('active', '')
-    set_flag('ddclient.installed')
+    set_flag('ddclient.configured')
+
+
+@when('config.changed')
+def update_config():
+    configure_ddclient()

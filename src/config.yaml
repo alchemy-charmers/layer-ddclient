@@ -1,13 +1,33 @@
 options:
-  string-option:
-    type: string
-    default: "Default Value"
-    description: "A short description of the configuration option"
-  boolean-option:
+  ddclient-enable:
     type: boolean
-    default: False
-    description: "A short description of the configuration option"
-  int-option:
+    default: false
+    description: 'Enable ddclient udpates'
+  ddclient-protocol:
+    type: string
+    default: 'googledomains'
+    description: 'Protocol for the service'
+  ddclient-server:
+    type: string
+    default: 'domains.google.com'
+    description: 'Server to post updates to'
+  ddclient-login:
+    type: string
+    default: ''
+    description: 'Login name'
+  ddclient-password:
+    type: string
+    default: ''
+    description: 'Password'
+  ddclient-address:
+    type: string
+    default: ''
+    description: 'Domain name to register this host to'
+  ddclient-interval:
     type: int
-    default: 9001
-    description: "A short description of the configuration option"
+    default: 1800
+    description: 'Update interval in seconds'
+  ddclient-ssl:
+    type: boolean
+    default: true
+    description: 'Use ssl for ddclient updates'
