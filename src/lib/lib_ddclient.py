@@ -5,6 +5,7 @@ class DdclientHelper():
     def __init__(self):
         self.charm_config = hookenv.config()
         self.ddclient_config_file = '/etc/ddclient.conf'
+        self.ddclient_file = '/etc/default/ddclient'
 
     def action_function(self):
         ''' An example function for calling from an action '''
@@ -24,3 +25,8 @@ class DdclientHelper():
                                    'ssl': use_ssl,
                                    'address': self.charm_config['ddclient-address'],
                                    })
+        templating.render('ddclient',
+                          self.ddclient_file,
+                          context={'interval': self.charm_config['ddclient-interval'],
+                                   })
+
