@@ -1,0 +1,6 @@
+#!/usr/local/sbin/charm-env python3
+
+from lib_ddclient import DdclientHelper
+
+helper = DdclientHelper()
+helper.action_function()

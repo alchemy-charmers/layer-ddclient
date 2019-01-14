@@ -1,0 +1,8 @@
+includes:
+  - layer:basic
+  - layer:apt
+options:
+  apt:
+    packages:
+      - ddclient
+  # Add additional layers and interfaces here
