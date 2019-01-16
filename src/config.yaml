@@ -1,7 +1,7 @@
 options:
   ddclient-enable:
     type: boolean
-    default: false
+    default: true
     description: 'Enable ddclient udpates'
   ddclient-protocol:
     type: string

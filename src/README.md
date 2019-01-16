@@ -1,19 +1,19 @@
-# Reactive Charm Template using Python
+# Overview
 
-This is a template for a reactive charm with handlers written in Python.
-It is intended for use with [charm-tools][] and the `charm create` function.
+# Usage
 
-
-
-This is the default template when creating a new charm with `charm create`.
-First, make sure you have [charm-tools][] installed:
-
-```
-sudo snap install charm
+```bash
+juju deploy cs:~pirate-charmers/ddclient
 ```
 
-Then just run the create command:
+# Configuration
 
-```
-charm create my-charm
-```
+Configuration options by default are configurd for googledomains. The username,
+password, and address for the DynamicDNS record must be configured. Any provider
+supported by ddclient can be used by changing the configuration options.
+
+# Contact Information
+
+  - Upstream website: https://github.com/pirate-charmers/layer-ddclient
+  - Bug tracker: https://github.com/pirate-charmers/layer-ddclient/issues
+
